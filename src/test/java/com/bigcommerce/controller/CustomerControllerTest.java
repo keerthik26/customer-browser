@@ -43,7 +43,11 @@ class CustomerControllerTest {
 
     @Test
     void getCustomerOrderHistoryShouldReturnHtmlPageForNonExistingUser() throws Exception {
+        String customerId = "485";
+        when(customerService.getCustomerOrderHistory(customerId)).thenThrow(RuntimeException.class);
 
+        mockMvc.perform(get("/customers/" + customerId + "/orderHistory"))
+                .andExpect(view().name("error"));
     }
 
     @Test
