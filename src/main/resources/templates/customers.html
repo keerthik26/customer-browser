@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Customer Browser Home Page</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="jumbotron text-center">
+    <h2>Customer Browser Home Page</h2>
+</div>
+<div class="container pt-3">
+    <h4> Customer List </h4>
+<table class="table table-hover" >
+<thead class="thead-light">
+<tr>
+    <th> Customer Name</th>
+    <th> Email </th>
+    <th> Total orders</th>
+    <th>  </th>
+</tr>
+</thead>
+<tbody>
+<tr th:if="${customers.empty}">
+    <td colspan="2"> No Customers Available</td>
+</tr>
+<tr th:each="customer : ${customers}">
+    <td><span th:text="${customer.firstName} + ' ' + ${customer.lastName}"> Customer Name </span></td>
+    <td><span th:text="${customer.email}"> Email </span> </td>
+    <td><span th:text="${customer.totalNoOfOrders}"> No of Orders </span></td>
+    <td><a th:href="@{'/customers/' + ${customer.id} + '/orderHistory'}" class="btn btn-link" role="button"> Details... </a></td>
+</tr>
+</tbody>
+</table>
+    <!--<ul class="pagination">
+        <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" th:href="@{?page=1}">1</a></li>
+        <li class="page-item"><a class="page-link" th:href="@{?page=2}">2</a></li>
+        <li class="page-item"><a class="page-link" th:href="@{?page=3}">3</a></li>
+        <li class="page-item"><a class="page-link" th:href="@{?page=3}">Next</a></li>
+    </ul>-->
+</div>
+</body>
+</html>

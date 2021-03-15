@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Order Details</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="jumbotron text-center">
+    <h2>Customer Details</h2>
+</div>
+<!--<div>
+    <tr th:if="${customerOrderHistory}">
+        <td colspan="2"> No Customers Available</td>
+    </tr>
+</div>-->
+<div class="container" th:if="customerOrderHistory != null">
+    <p class="b" th:text="'Customer Name: ' + ${customerOrderHistory.firstName} + ${customerOrderHistory.lastName}" />
+    <p th:text="'Email: ' + ${customerOrderHistory.email} " />
+    <p th:text="'Life Time Value: ' + ${customerOrderHistory.lifeTimeValue} " />
+</div>
+<div class="container pt-3">
+<h4> Orders Placed </h4>
+
+    <table class="table table-hover">
+        <thead class="thead-light">
+        <tr>
+            <th> Order ID</th>
+            <th> Total Items</th>
+            <th> Total Value</th>
+            <th> Status </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${customerOrderHistory.orderHistory.empty}">
+            <td colspan="2"> No Orders Available</td>
+        </tr>
+        <tr th:each="order : ${customerOrderHistory.orderHistory}">
+            <td><span th:text="${order.id}"> Order ID </span></td>
+            <td><span th:text="${order.itemsTotal}"> Status </span></td>
+            <td><span th:text="${order.totalValue}"> Total Value </span></td>
+            <td><span th:text="${order.status}"> Status </span></td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="http://localhost:8080/customers" class="btn btn-secondary" role="button"> Previous Page </a>
+</div>
+</body>
+</html>
