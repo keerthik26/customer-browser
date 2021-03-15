@@ -47,7 +47,8 @@ public class RestCustomerRepository implements CustomerRepository {
                                     });
                                 } else {
                                     LOGGER.error("Unexpected Status: {}", response.statusCode());
-                                    return Mono.error(RuntimeException::new);
+                                    throw new RuntimeException("Unexpected Status: " + response.statusCode());
+                                   // return Mono.error(RuntimeException::new);
                                 }
                             }
 
@@ -76,10 +77,10 @@ public class RestCustomerRepository implements CustomerRepository {
                                 return response.bodyToMono(CustomerResponse.class);
                             } else {
                                 LOGGER.error("Unexpected Status: {}", response.statusCode());
-                                return Mono.error(RuntimeException::new);
+                                throw new RuntimeException("Unexpected Status: " + response.statusCode());
+                                //return Mono.error(RuntimeException::new);
                             }
                         }
-
                 );
 
         CustomerResponse customer = customerMono.block();
@@ -101,8 +102,12 @@ public class RestCustomerRepository implements CustomerRepository {
                         if (response.statusCode().equals(HttpStatus.OK)) {
                             return response.bodyToMono(new ParameterizedTypeReference<List<OrderResponse>>() {
                             });
+                        } else if (response.statusCode().equals(HttpStatus.NO_CONTENT)) {
+                            return Mono.fromSupplier(ArrayList::new);
                         } else {
-                            return Mono.error(RuntimeException::new);
+                            LOGGER.error("Unexpected Status: {}", response.statusCode());
+                            throw new RuntimeException("Unexpected Status: " + response.statusCode());
+                           // return Mono.error(RuntimeException::new);
                         }
                     });
 
@@ -130,7 +135,9 @@ public class RestCustomerRepository implements CustomerRepository {
                         } else if (response.statusCode().equals(HttpStatus.NO_CONTENT)) {
                             return Mono.fromSupplier(ArrayList::new);
                         } else {
-                            return Mono.error(RuntimeException::new);
+                            LOGGER.error("Unexpected Status: {}", response.statusCode());
+                            throw new RuntimeException("Unexpected Status: " + response.statusCode());
+                           // return Mono.error(RuntimeException::new);
                         }
                     });
 
