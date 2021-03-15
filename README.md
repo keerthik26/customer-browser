@@ -37,8 +37,9 @@ Source code repository link [GitHub](https://github.com/keerthik26/customer-brow
    It generates `customer-browser-1.0-SNAPSHOT.jar` file in the project's target folder. 
 
 ## Steps to run
-1. Run the jar using command:
-  `java -jar target/customer-browser-1.0-SNAPSHOT.jar`
+1. Change directory to Project folder.
+2. Run the jar using command :
+  `java -jar ./target/customer-browser-1.0-SNAPSHOT.jar`
    
 ## Testing the application
 1. Now the application is running on the local host with port number 8080.

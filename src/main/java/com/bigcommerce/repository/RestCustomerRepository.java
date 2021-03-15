@@ -19,8 +19,6 @@ import java.util.List;
 @Component
 public class RestCustomerRepository implements CustomerRepository {
     private static final Logger LOGGER = LoggerFactory.getLogger(RestCustomerRepository.class);
-    /*@Autowired
-    private RestTemplate restTemplate;*/
 
     @Autowired
     private WebClient webClient;
@@ -31,7 +29,7 @@ public class RestCustomerRepository implements CustomerRepository {
         boolean isPaginated = false;
         int pageNum = 1;
         int limit = 250;
-        if(page > 0){
+        if (page > 0) {
             pageNum = page;
             limit = 25;
             isPaginated = true;
@@ -42,7 +40,7 @@ public class RestCustomerRepository implements CustomerRepository {
         List<CustomerResponse> responseEntityBody;
         do {
             Mono<ResponseEntity<List<CustomerResponse>>> responseEntityMono = webClient.get()
-                    .uri(customerUrl, pageNum,limit)
+                    .uri(customerUrl, pageNum, limit)
                     .exchangeToMono(response -> {
                                 if (response.statusCode().equals(HttpStatus.OK)) {
                                     return response.toEntity(new ParameterizedTypeReference<List<CustomerResponse>>() {
@@ -70,9 +68,6 @@ public class RestCustomerRepository implements CustomerRepository {
     public CustomerResponse getCustomer(String customerId) {
 
         String customerUrl = "/customers/{customerId}";
-
-        /*ResponseEntity<Customer> responseEntity = restTemplate.getForEntity( customerUrl, Customer.class, customerId);
-        Customer customer =  responseEntity.getBody();*/
 
         Mono<CustomerResponse> customerMono = webClient.get()
                 .uri(customerUrl, Collections.singletonMap("customerId", customerId))
