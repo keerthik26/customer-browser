@@ -89,13 +89,17 @@ public class OrderDTO {
     public Double getTax() {
         return tax;
     }
+
     @Override
     public String toString() {
-        return "Order{" +
-                "id='" + id + '\'' +
-                ", customerId='" + customerId + '\'' +
+        return "OrderDTO{" +
+                "id=" + id +
                 ", status='" + status + '\'' +
+                ", itemsTotal=" + itemsTotal +
+                ", itemsShipped=" + itemsShipped +
+                ", totalBeforeTax=" + totalBeforeTax +
+                ", totalValue=" + totalValue +
+                ", tax=" + tax +
                 '}';
     }
-
 }

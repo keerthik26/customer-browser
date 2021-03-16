@@ -23,4 +23,28 @@ public class CustomerBrowserAppIntegrationTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("customers"));
     }
+
+    @Test
+    public void testGetCustomerWithPaginationShouldReturnCustomersView() throws Exception {
+        int pageNum = 2;
+        mockMvc.perform(get("/customers?page=" + 2))
+                .andExpect(status().isOk())
+                .andExpect(view().name("customers"));
+    }
+
+    @Test
+    void testGetCustomerOrderHistoryForExistingIdShouldReturnView() throws Exception {
+        int customerId = 123;
+        mockMvc.perform(get("/customers/" + customerId + "/orderHistory"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("customerOrderHistory"));
+    }
+
+    @Test
+    void testGetCustomerOrderHistoryForNonExistingIdShouldReturnErrorView() throws Exception {
+        int customerId = 1234;
+        mockMvc.perform(get("/customers/" + customerId + "/orderHistory"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("error"));
+    }
 }

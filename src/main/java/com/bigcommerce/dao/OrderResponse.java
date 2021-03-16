@@ -213,4 +213,15 @@ public class OrderResponse {
         this.customerId = customerId;
     }
 
+    @Override
+    public String toString() {
+        return "OrderResponse{" +
+                "customerId=" + customerId +
+                ", id=" + id +
+                ", itemsShipped=" + itemsShipped +
+                ", itemsTotal=" + itemsTotal +
+                ", status='" + status + '\'' +
+                ", totalIncTax='" + totalIncTax + '\'' +
+                '}';
+    }
 }

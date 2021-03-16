@@ -97,6 +97,10 @@ public class CustomerDTO {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", totalNoOfOrders=" + totalNoOfOrders +
+                ", orderHistory=" + orderHistory +
+                ", lifeTimeValue=" + lifeTimeValue +
                 '}';
     }
 }

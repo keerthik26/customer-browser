@@ -48,7 +48,6 @@ public class RestCustomerRepository implements CustomerRepository {
                                 } else {
                                     LOGGER.error("Unexpected Status: {}", response.statusCode());
                                     throw new RuntimeException("Unexpected Status: " + response.statusCode());
-                                   // return Mono.error(RuntimeException::new);
                                 }
                             }
 
@@ -107,12 +106,11 @@ public class RestCustomerRepository implements CustomerRepository {
                         } else {
                             LOGGER.error("Unexpected Status: {}", response.statusCode());
                             throw new RuntimeException("Unexpected Status: " + response.statusCode());
-                           // return Mono.error(RuntimeException::new);
                         }
                     });
 
             ordersResponse = orderListMono.block();
-            LOGGER.info("Order List Response Entity: {}", ordersResponse);
+            LOGGER.trace("Order List Response Entity: {}", ordersResponse);
             orders.addAll(ordersResponse);
             pageNum++;
         } while (ordersResponse.size() == 250);
@@ -137,7 +135,6 @@ public class RestCustomerRepository implements CustomerRepository {
                         } else {
                             LOGGER.error("Unexpected Status: {}", response.statusCode());
                             throw new RuntimeException("Unexpected Status: " + response.statusCode());
-                           // return Mono.error(RuntimeException::new);
                         }
                     });
 

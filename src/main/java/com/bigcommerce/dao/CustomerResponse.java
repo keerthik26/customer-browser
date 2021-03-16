@@ -71,4 +71,16 @@ public class CustomerResponse {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    @Override
+    public String toString() {
+        return "CustomerResponse{" +
+                "lastName='" + lastName + '\'' +
+                ", phone='" + phone + '\'' +
+                ", id=" + id +
+                ", storeCredit='" + storeCredit + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

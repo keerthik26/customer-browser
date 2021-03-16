@@ -1,10 +1,10 @@
 package com.bigcommerce.service;
 
+import com.bigcommerce.dao.CustomerResponse;
+import com.bigcommerce.dao.OrderResponse;
 import com.bigcommerce.dto.CustomerDTO;
 import com.bigcommerce.dto.OrderDTO;
 import com.bigcommerce.repository.CustomerRepository;
-import com.bigcommerce.dao.CustomerResponse;
-import com.bigcommerce.dao.OrderResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,8 +43,8 @@ public class DefaultCustomerService implements CustomerService {
         customer.setOrderHistory(ordersResponse.stream().map(response -> {
             return toOrderDTO(response);
         }).collect(Collectors.toList()));
-        //TODO: Check for currency
         customer.setLifeTimeValue(customer.getOrderHistory().stream().mapToDouble(OrderDTO::getTotalValue).sum());
+        LOGGER.trace("CustomerDTO for customerId={} is {}", customerId, customer);
         return customer;
     }
 
