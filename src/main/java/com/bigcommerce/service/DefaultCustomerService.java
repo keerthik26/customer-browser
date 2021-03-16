@@ -23,6 +23,11 @@ public class DefaultCustomerService implements CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
 
+    /**
+     * For this, it retrieves all the orders using Orders API and groups them by customer ids
+     * and all customers by calling Customers API to fetch their basic details.
+     *
+     */
     @Override
     public List<CustomerDTO> getCustomersWithTheirTotalNoOfOrders(int page) {
 
@@ -35,6 +40,14 @@ public class DefaultCustomerService implements CustomerService {
         return customers;
     }
 
+
+    /**
+     * For this, it retrieves all the orders of customers by calling Orders API with customer id as request parameter
+     * and Customers API to fetch the client's basic details.
+     *
+     * Calculates the life time value of customer by summing up {@code totalIncTax} from their {@link OrderResponse}
+     *
+     */
     @Override
     public CustomerDTO getCustomerOrderHistory(String customerId) {
         CustomerResponse customerResponse = customerRepository.getCustomer(customerId);
