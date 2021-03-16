@@ -17,16 +17,13 @@ Built Spring MVC Web application which consumes store's V2 REST API's using Spri
 and renders the required view (HTML page) to the client using Thymeleaf engine
 
 ## Dependencies
-* MVC framework - `Spring Boot framework` 
 * Language - `Java` 
+* Dependency Injection framework - `Spring Boot` 
 * Java Template Engine - `Thymeleaf` 
 * Styling - `Bootstrap` 
 * Logging - `slf4`
+* Build tool - `Maven`
 
-## Configuration
-
-Open the newly created `.env` file and fill in the `BC_API_KEY` field with the key supplied in the email along with this
-assignment.
 
 ## Code Repository
 Source code repository link [GitHub](https://github.com/keerthik26/customer-browser).
