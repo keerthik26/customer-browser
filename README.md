@@ -42,8 +42,10 @@ Source code repository link [GitHub](https://github.com/keerthik26/customer-brow
 1. Now the application is running on the local host with port number 8080.
    Visit `http//localhost:8080/` on a browser that takes you to a Welcome page.
    
-2. To view all the customers, visit `http//localhost:8080/customers`
+2. To view all the customers, either 
+    * click on `View Customers` button on Welcome page
+    * visit `http//localhost:8080/customers`
 
 3. To view the details of a particular customer, either
-    * click the [Details...]() link on customers page
+    * click the `Details...` link on customers page
     * visit `http//localhost:8080/customers/{customerId}/orderHistory`
