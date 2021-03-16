@@ -32,6 +32,7 @@ public class CustomerController {
         LOGGER.trace("Request received for getting all the customers");
         List<CustomerDTO> customers = customerService.getCustomersWithTheirTotalNoOfOrders(page);
         model.addAttribute("customers", customers);
+        model.addAttribute("currentPage", page);
         return "customers";
     }
 }
