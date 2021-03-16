@@ -13,23 +13,21 @@ You are free, and encouraged, to create whatever additional models, services, et
 we would love you to include unit tests for your submission.
 
 ##Approach
-Built Spring MVC Web application which consumes store's V2 REST API's using Spring's WebClient 
-and renders the required view (HTML page) to the client using Thymeleaf engine
+Built Spring MVC Web application which consumes store's V2 REST API's using Spring's WebClient component
+and renders the required view as HTML page to the client using Thymeleaf template engine.
 
-## Dependencies
-* Language - `Java` 
+I chose below technologies as I'm familiar with them. So I can focus more on Designing part of the application
+
+## Tech stack
+* Language - `Java`
 * Dependency Injection framework - `Spring Boot` 
 * Java Template Engine - `Thymeleaf` 
 * Styling - `Bootstrap` 
 * Logging - `slf4`
 * Build tool - `Maven`
 
-
-## Code Repository
-Source code repository link [GitHub](https://github.com/keerthik26/customer-browser).
-
 ## Set up
-1. Clone the project from [GitHub](https://github.com/keerthik26/customer-browser).
+1. Clone the project from [GitHub](https://github.com/keerthik26/customer-browser) repository.
 2. Build the Jar file using Maven `mvnw clean package`. 
    It generates `customer-browser-1.0-SNAPSHOT.jar` file in the project's target folder. 
 
