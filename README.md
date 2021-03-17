@@ -12,7 +12,7 @@ This application is to connect to a [live BigCommerce store](https://store-velgo
 You are free, and encouraged, to create whatever additional models, services, etc you deem appropriate. If time allows,
 we would love you to include unit tests for your submission.
 
-##Approach
+## Approach
 Built Spring MVC Web application which consumes store's V2 REST API's using Spring's WebClient component
 and renders the required view as HTML page to the client using Thymeleaf template engine.
 
